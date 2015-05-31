@@ -34,17 +34,11 @@ class PopupTableView: UIView,UITableViewDataSource,UITableViewDelegate {
         isShow(true)
     }
     
-    func dismiss() {
-        
+    
+  private  func dismiss() {
         isShow(false)
     }
     
-    
-    
-    override init() {
-        super.init()
-        setup()
-    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -77,10 +71,10 @@ class PopupTableView: UIView,UITableViewDataSource,UITableViewDelegate {
         var count : Int = items.count > 8 ? 8 : items.count
         var height = CGFloat(count) * tableViewRowHeight
         
-        frame = CGRectMake(40, popupTableViewBounds.height/2-height/2, 240, height);
-        center = CGPointMake(keyWindow.bounds.size.width/2.0, keyWindow.bounds.size.height/2.0)
+        self.frame = CGRectMake(40, popupTableViewBounds.height/2-height/2, 240, height);
+        self.center = CGPointMake(keyWindow.bounds.size.width/2.0, keyWindow.bounds.size.height/2.0)
         
-        tableView.frame = bounds
+        tableView.frame = self.bounds
     }
     
     private func controlPressed() {
@@ -110,11 +104,9 @@ class PopupTableView: UIView,UITableViewDataSource,UITableViewDelegate {
         
     }
     
-    
-    
     internal func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: .Default, reuseIdentifier: "cell")
-        cell.textLabel.text = items[indexPath.row]
+        cell.textLabel!.text = items[indexPath.row]
         return cell
     }
     
